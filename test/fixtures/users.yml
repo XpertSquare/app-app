@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  username: MyString
+  hash_pwd: MyString
+  salt_pwd: MyString
+
+two:
+  username: MyString
+  hash_pwd: MyString
+  salt_pwd: MyString

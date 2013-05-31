@@ -2,11 +2,36 @@
 <html>
 <head>
   <title>AppApp</title>
+  <%= stylesheet_link_tag    "site", :media => "all" %>
   <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="navbar navbar-fixed-top">  
+  <div class="navbar-inner">  
+    <div class="container">  
+	    <ul class="nav">  
+	    	<li><a href="#">Home</a></li> 
+		  <li class="dropdown">  
+		    <a href="#"  
+		          class="dropdown-toggle"  
+		          data-toggle="dropdown">  
+		          Services  
+		          <b class="caret"></b>  
+		    </a>  
+		    <ul class="dropdown-menu">  
+		     	<li><a href="#">Web Design</a></li>  
+		  		<li><a href="#">Web development</a></li>  
+		  		<li><a href="#">Wordpress Theme development</a></li>  
+		    </ul>  
+		  </li> 
+		  <li><a href="#">About us</a></li>
+		  <li><a href="#">Login</a></li>   
+		</ul>  
+    </div>  
+  </div>  
+</div> 
 
 <div class="container">
     <%= yield %>

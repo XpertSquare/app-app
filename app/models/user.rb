@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
-  attr_accessible :hash_pwd, :salt_pwd, :username
+  has_secure_password
+  
+  attr_accessible :hash_pwd, :salt_pwd, :username, :password, :password_confirmation
+  
+  validates_uniqueness_of :username
+  
   has_many :memberships
+  
 end

@@ -40,10 +40,29 @@ class AccountsController < ApplicationController
   # POST /accounts
   # POST /accounts.json
   def create
-    @account = Account.new(params[:account])
+    @account = Account.new
+    @account.name = params[:name]
+    @account.status = "active"
+
+   @user = User.find_by_username(params[:email])
+   if @user == nil
+     @user = User.new
+     @user.username = params[:email]
+     @user.password ="password"
+     @user.password_confirmation = "password"
+   end     
+   
+   ActiveRecord::Base.transaction do
+     @account.save
+     @user.save  
+     @membership = Membership.new
+     @membership.account_id = @account.id
+     @membership.user_id = @user.id
+     @membership.save
+   end
 
     respond_to do |format|
-      if @account.save
+    if @account.id > 0          
         format.html { redirect_to @account, notice: 'Account was successfully created.' }
         format.json { render json: @account, status: :created, location: @account }
       else

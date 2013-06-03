@@ -1,19 +1,14 @@
 <h1>Create new account </h1>
 
 <div class="row">
-    <div class="span 6 offset 3">
-        <%= form_tag accounts_path do %>
-        
-        <%= label_tag :name %>
-        <%= text_field_tag :name, params[:name] %>
-
-        <%= label_tag :email %>
-        <%= text_field_tag :email, params[:email] %>
-
-
-        <%= submit_tag "Create account", class: "btn btn-large btn-primary" %>
-       <% end %>
-
+	<div class="span9">
+		<%= form_tag  accounts_path, :class=>"form-inline"  do %>
+	    
+	    		<%= text_field_tag :name, params[:name], :placeholder => "Acount name", :maxlength =>100 %>
+	    		<%= text_field_tag :email, params[:email], :placeholder => "Email address" , :maxlength =>100 %>
+	    		<%= submit_tag "Create account", class: "btn btn-medium btn-primary" %>
+	    <% end %>
+	</div>    
 </div>
 
 

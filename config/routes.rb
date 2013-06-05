@@ -1,13 +1,20 @@
 AppApp::Application.routes.draw do
-  resources :accounts
-  resources :sessions
-  resources :users
-
-  get "site/index"
+  
+    get "site/index"
   
   get 'signup', to: 'accounts#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
+  
+  resources :sessions
+  resources :users
+  resources :accounts
+  
+  scope ":account_id" do
+    root :to => "dashboard#index"
+  end
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

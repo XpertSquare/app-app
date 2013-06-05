@@ -48,8 +48,12 @@ class AccountsController < ApplicationController
    if @user == nil
      @user = User.new
      @user.username = params[:email]
-     @user.password ="password"
-     @user.password_confirmation = "password"
+     #generate random password
+     @char_map =  [('a'..'z'),('A'..'Z'), (0..9)].map{|i| i.to_a}.flatten
+     @user.password = (0...10).map{ @char_map[rand(@char_map.length)] }.join
+     logger.info "User password: " + @user.password
+     logger.info "Sample generation: " + (0...10).map{ @char_map[rand(@char_map.length)] }.join
+     @user.password_confirmation = @user.password
    end     
    
    ActiveRecord::Base.transaction do

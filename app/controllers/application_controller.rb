@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user
+  
+  def login_required
+    redirect_to('/') if current_user.blank?
+  end
     
 private
 

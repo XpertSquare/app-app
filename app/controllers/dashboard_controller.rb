@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   
-  before_filter :authorize
+  before_filter :authorize!
   
   def index
       @account = Account.find(params[:account_id])

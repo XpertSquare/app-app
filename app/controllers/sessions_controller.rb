@@ -10,13 +10,12 @@ class SessionsController < ApplicationController
         cookies.permanent[:auth_token] = {
                                             :value => user.auth_token,
                                             :expires => 1.week.from_now
-                                          }
-        
+                                          }        
       else
         cookies[:auth_token] = user.auth_token
       end
       
-      redirect_to root_url, notice: "Logged in!"
+      redirect_to return_url, :notice => "You are now logged in! "  
     else
       flash.now.alert = "Email or password is invalid"
       render "new"
@@ -25,7 +24,7 @@ class SessionsController < ApplicationController
   
   def destroy
     cookies.delete(:auth_token)
-    redirect_to root_url, notice: "Logged out!"
+    redirect_to root_url, notice: "You are now logged out!"
   end
   
 end

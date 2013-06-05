@@ -67,7 +67,7 @@ class AccountsController < ApplicationController
 
     respond_to do |format|
     if @account.id > 0 
-        ApplicationMailer.registration_confirmation(@user).deliver         
+        ApplicationMailer.registration_confirmation(@account, @user).deliver         
         format.html { redirect_to @account, notice: 'Account was successfully created.' }
         format.json { render json: @account, status: :created, location: @account }
       else

@@ -24,6 +24,10 @@ group :assets do
   gem 'therubyracer'
 end
 
+group :development do
+  gem 'bullet'
+end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

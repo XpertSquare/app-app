@@ -62,6 +62,7 @@ class AccountsController < ApplicationController
      @membership = Membership.new
      @membership.account_id = @account.id
      @membership.user_id = @user.id
+     @membership.type = "owner"
      @membership.save
    end
 

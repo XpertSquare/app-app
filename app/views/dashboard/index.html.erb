@@ -10,3 +10,8 @@
   <%= @account.status %>
 </p>
 
+<%@account.memberships.each do |membership| %>
+	<h2><%=membership.user.username %></h2>
+		
+<%end%>
+

@@ -1,0 +1,25 @@
+<h2>Users under the Account ID: <%=@account.id%></h2>
+
+<table class="table table-hover table-condensed">
+	<thead>
+		<tr>
+			<th>Action</th>
+			<th>Display name</th>
+			<th>Username</th>
+			<th>Type</th>
+		</tr>
+	</thead>
+<%@memberships.each do |membership| %>
+	<tr>
+		<td>
+			<%= link_to "Edit", :controller => "users", :action=>"edit" , :account_id=>@account.id , :id =>membership.user.id%>
+			</td>
+		<td><%=membership.user.display_name %></td>
+		<td><%=membership.user.username %></td>
+		<td><%=membership.membership_type%></td>			
+	</tr>	
+		
+<%end%>
+</table>
+
+	

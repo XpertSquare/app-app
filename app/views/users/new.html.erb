@@ -1,6 +1,8 @@
-<h1>Sign Up</h1>
+<h2>Create a new user</h2>
 
-<%= form_for @user do |f| %>
+
+
+<%= form_for @user , :html => {:class => "form-horizontal"} do |f| %>
   <% if @user.errors.any? %>
     <div class="error_messages">
       <h2>Form is invalid</h2>
@@ -12,17 +14,41 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
+  <div class="control-group">
+    <%= f.label :username, :class=>"control-label" %>
+    <div class="controls">
+    	<%= f.text_field :username %>
+    </div>	
   </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
+    <div class="control-group">
+    <%= f.label :display_name, :class=>"control-label" %>
+    <div class="controls">
+    	<%= f.text_field :display_name %>
+    </div>	
   </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
+
+  <div class="control-group">
+    <%= label_tag :password, nil, :class=> "control-label" %>
+    <div class="controls">
+    	<%= f.password_field :password %>
+    </div>	
   </div>
-  <div class="actions"><%= f.submit "Sign Up" %></div>
+  <div class="control-group">
+    <%= label_tag :password_confirmation, nil, :class=> "control-label" %>
+    <div class="controls">
+    	<%= f.password_field :password_confirmation %>
+    </div>	
+  </div>
+  <div class="control-group">
+    <%= label_tag :membership_type, nil, :class=> "control-label" %>
+    <div class="controls">
+    	<%= text_field_tag :membership_type %>
+    </div>	
+  </div>
+  
+  <div class="control-group">
+	<div class="controls">
+  		<%= submit_tag "Create new user", class: "btn btn-medium btn-primary"   %>
+  	</div>
+  </div>  
 <% end %>

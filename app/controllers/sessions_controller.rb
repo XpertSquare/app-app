@@ -15,7 +15,12 @@ class SessionsController < ApplicationController
         cookies[:auth_token] = user.auth_token
       end
       
-      redirect_to return_url, :notice => "You are now logged in! "  
+      @account_id = user.accounts.first.id
+      
+      
+        redirect_to return_url, :notice => "You are now logged in! " + @account_id.to_s  + " +++  " + return_url 
+
+      
     else
       flash.now.alert = "Email or password is invalid"
       render "new"

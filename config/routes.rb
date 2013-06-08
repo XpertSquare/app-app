@@ -7,11 +7,13 @@ AppApp::Application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   
   resources :sessions
-  resources :users
+  #resources :users
   resources :accounts
   
   scope ":account_id" do
-    root :to => "dashboard#index"
+    
+    resources :users
+    root :to => "dashboard#index" , as: "dashboard"
   end
 
 

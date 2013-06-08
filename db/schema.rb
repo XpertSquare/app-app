@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130606205241) do
+ActiveRecord::Schema.define(:version => 20130608112239) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(:version => 20130606205241) do
     t.datetime "updated_at",                     :null => false
     t.string   "password_digest"
     t.string   "auth_token"
+    t.string   "email"
+    t.string   "display_name",    :limit => 50
   end
 
 end

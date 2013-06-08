@@ -20,6 +20,10 @@ private
     end   
   end
   
+  def initialize_account
+    @account = Account.find(params[:account_id])
+  end
+  
   def set_return_url(path, overwrite = false)
     if overwrite or session[:return_url].blank?
       session[:return_url] = path

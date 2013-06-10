@@ -5,10 +5,13 @@
   <%= stylesheet_link_tag    "dashboard", :media => "all" %>
   <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "rails" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 </body>
+
+<div id="dashboard-wrap">
 
 <div id = "dashboard-header" class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -21,7 +24,7 @@
           <a class="brand" href="#"><%=@account.name%></a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
-              <%=current_user.username%></a> | <%= link_to "Logout",  logout_path%>
+              <%=current_user.display_name%></a> | <%= link_to "Logout",  logout_path%>
             </p>
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
@@ -41,7 +44,7 @@
  
  <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span3">
+        <div class="span2">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Sidebar</li>
@@ -56,10 +59,11 @@
               <%else%>
               	<li><%= link_to "Users", users_path, :account_id => params[:account_id] %></li>
               <%end%>
+              <li><a href="#settings">Settings</a></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
-        <div class="span9">
+        <div class="span10">
           <div class="row-fluid">
           	<%= render partial: "layouts/flash_messages", locals: { flash: flash } %>
           	<%= yield %>            
@@ -67,14 +71,15 @@
         
         </div><!--/span-->
       </div><!--/row-->
+</div>
+</div>
+		
+<div id="footer">
+	<div class="container">
+    	<p>Copyright &copy; AppApp <%= Time.now.year %>. All rights reserved.</p>
+     </div>
+</div>
 
-      <hr>
-
-      <footer>
-        <p>&copy; AppApp <%= Time.now.year %></p>
-      </footer>
-
-    </div>
- 
+     
 
 </html>

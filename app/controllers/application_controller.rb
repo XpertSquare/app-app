@@ -1,15 +1,25 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :current_user, :authorize
+  helper_method :current_user, :authorize, :field_class
   
   def login_required
     redirect_to login_url, alert: "Not authorized. You need to be logged in to access the page requested" if current_user.nil?
   end
+  
+  
     
 private
 
   def current_user
     @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
+  end
+  
+  def field_class(resource, field_name)
+    if resource.errors.include?(field_name)
+      return "control-label error".html_safe
+    else
+      return "control-label".html_safe
+    end
   end
   
   

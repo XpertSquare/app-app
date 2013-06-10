@@ -4,7 +4,7 @@
 
 <%= form_for @user , :html => {:class => "form-horizontal"} do |f| %>
   <% if @user.errors.any? %>
-    <div class="error_messages">
+    <div class="alert alert-error">
       <h2>Form is invalid</h2>
       <ul>
         <% @user.errors.full_messages.each do |message| %>
@@ -15,34 +15,42 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :username, :class=>"control-label" %>
+    <%= f.label :username, :class => field_class(@user, :username) %>
     <div class="controls">
     	<%= f.text_field :username %>
     </div>	
   </div>
     <div class="control-group">
-    <%= f.label :display_name, :class=>"control-label" %>
+    <%= f.label :display_name, :class => field_class(@user, :display_name) %>
     <div class="controls">
     	<%= f.text_field :display_name %>
     </div>	
   </div>
 
   <div class="control-group">
-    <%= label_tag :password, nil, :class=> "control-label" %>
+    <%= label_tag :password, nil, :class => field_class(@user, :password) %>
     <div class="controls">
     	<%= f.password_field :password %>
     </div>	
   </div>
   <div class="control-group">
-    <%= label_tag :password_confirmation, nil, :class=> "control-label" %>
+    <%= label_tag :password_confirmation, nil, :class => field_class(@user, :password_confirmation) %>
     <div class="controls">
     	<%= f.password_field :password_confirmation %>
     </div>	
   </div>
   <div class="control-group">
-    <%= label_tag :membership_type, nil, :class=> "control-label" %>
+  	<%= label_tag :membership_type, nil, :class=> "control-label" %>
     <div class="controls">
-    	<%= text_field_tag :membership_type %>
+    	
+    	<%= label_tag :membership_type_staff, :class=>'radio inline' do %>
+		  <%= radio_button_tag :membership_type, "staff" , @membership_type=='staff' %>
+		  Staff
+		<% end %>
+    	<%= label_tag :membership_type_admin, :class=>'radio inline' do %>
+		  <%= radio_button_tag :membership_type, "admin", @membership_type=='admin' %>
+		  Admin
+		<% end %>
     </div>	
   </div>
   

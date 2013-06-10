@@ -4,16 +4,15 @@ class User < ActiveRecord::Base
   attr_accessible :username, :password, :password_confirmation, :email, :display_name 
   
   validates_uniqueness_of :username
-  validates_presence_of :password, :on => :create
+  validates_presence_of :username, :password, :on => :create
 
   
   has_many :memberships
   has_many :accounts, :through => :memberships, :dependent => :destroy
   
-  before_create  {
-    generate_token(:auth_token) 
-    generate_password
-    }
+  before_create  { generate_token(:auth_token) }
+  
+  after_validation { self.errors.messages.delete(:password_digest) }
     
   
   def generate_token(column)

@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
+    @membership_type = 'staff'
   end
   
   def edit
@@ -36,24 +37,33 @@ class UsersController < ApplicationController
   end
 
   def create
+    @membership_type = params[:membership_type]
     @user = User.new(params[:user])
-    @membership = Membership.new
-    @membership.account_id = @account.id
-    @membership.membership_type = params[:membership_type]
-    
-  ActiveRecord::Base.transaction do
-     @user.save
-     @membership.user_id = @user.id
-     @membership.save
-  end  
-    
+
     respond_to do |format|
-    if @user.id > 0                  
-        format.html { redirect_to users_path, :account_id => params[:account_id], notice: 'The user was successfully created.' }      
+      if @user.save
+        @membership = Membership.new
+        @membership.account_id = @account.id
+        @membership.user_id = @user.id
+        @membership.membership_type = params[:membership_type]
+        @membership.save
+        
+        format.html { redirect_to users_path, :account_id => params[:account_id], notice: 'The user' + @user.username + ' was successfully created.' }
+        
       else
         format.html { render action: "new" }        
       end
+    end    
+  end
+  
+  def destroy
+    @user = User.find(params[:id])
+    @username = @user.username
+    @user.destroy
+
+    respond_to do |format|
+      format.html { redirect_to users_path, :account_id => params[:account_id], notice: 'The user' + @username + ' was successfully deleted.' }
+      
     end
-    
   end
 end

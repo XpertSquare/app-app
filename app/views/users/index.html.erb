@@ -13,7 +13,8 @@
 	<tr>
 		<td>
 			<%= link_to "Edit", :controller => "users", :action=>"edit" , :account_id=>@account.id , :id =>membership.user.id%>  
-			|  <%= link_to "Delete", :controller => "users", :action=>"destroy" , :account_id=>@account.id , :id =>membership.user.id , :method=>:delete, :class=>"btn btn-danger",:confirm=>"Are you sure?" %>
+			|  
+			<%= link_to 'Destroy', :controller=>"users", :action=>"destroy", :method=>'delete', :account_id => @account.id, :id=>membership.user.id %>
 			</td>
 		<td><%=membership.user.display_name %></td>
 		<td><%=membership.user.username %></td>

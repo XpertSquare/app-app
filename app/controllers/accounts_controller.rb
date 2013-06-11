@@ -1,4 +1,6 @@
 class AccountsController < ApplicationController
+  layout 'dashboard', :only => ['edit']
+  
   # GET /accounts
   # GET /accounts.json
   def index
@@ -34,7 +36,7 @@ class AccountsController < ApplicationController
 
   # GET /accounts/1/edit
   def edit
-    @account = Account.find(params[:id])
+    @account = Account.find(params[:account_id])
   end
 
   # POST /accounts

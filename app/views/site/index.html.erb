@@ -6,6 +6,7 @@
 		<%= form_tag  accounts_path, :class=>"form-inline"  do %>
 	    
 	    		<%= text_field_tag :name, params[:name], :placeholder => "Acount name", :maxlength =>100 %>
+	    		<%= text_field_tag :display_name, params[:display_name], :placeholder => "Your name" , :maxlength =>50 %>
 	    		<%= text_field_tag :email, params[:email], :placeholder => "Email address" , :maxlength =>100 %>
 	    		<%= submit_tag "Create account", class: "btn btn-medium btn-primary" %>
 	    <% end %>

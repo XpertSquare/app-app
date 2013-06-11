@@ -11,9 +11,10 @@ AppApp::Application.routes.draw do
   resources :accounts
   
   scope ":account_id" do
-    
+    get 'settings', to: 'accounts#edit', as: 'settings'
     resources :users
     root :to => "dashboard#index" , as: "dashboard"
+    
   end
 
 

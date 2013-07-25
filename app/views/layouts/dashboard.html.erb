@@ -42,49 +42,43 @@
     </div>
  </div-->
  
- <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span2">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
+ 
+
+
+<div class="dashboard-container">
+	<div id="dashboard-sidebar">
+		<ul class="genesis-nav-menu">			
               <% if params[:controller]=="dashboard"%>              
-              	<li class="active"><%= link_to "Dashboard", dashboard_path, :account_id => params[:account_id] %></li>
+              	<li><%= link_to "Dashboard", dashboard_path, :account_id => params[:account_id], :class=>"selected" %></li>
               <%else%>
               	<li><%= link_to "Dashboard", dashboard_path, :account_id => params[:account_id] %></li>
               <%end%>
               
               <% if params[:controller]=="users"%>
-              	<li class="active"><%= link_to "Users", users_path, :account_id => params[:account_id] %></li>              
+              	<li><%= link_to "Users", users_path, :account_id => params[:account_id], :class=>"selected"  %></li>              
               <%else%>
               	<li><%= link_to "Users", users_path, :account_id => params[:account_id] %></li>
               <%end%>
               <% if params[:controller]=="accounts"%>              
-              	<li class="active"><%= link_to "Settings", settings_path, :account_id => params[:account_id] %></li>
+              	<li><%= link_to "Settings", settings_path, :account_id => params[:account_id], :class=>"selected"  %></li>
               <%else%>
               	<li><%= link_to "Settings", settings_path, :account_id => params[:account_id] %></li>
               <%end%>
-              
-              
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-        <div class="span10">
-          <div class="row-fluid">
+			
+		</ul>
+	</div>
+	<div id="dashboard-content">
+		<div style="padding:15px;">
           	<%= render partial: "layouts/flash_messages", locals: { flash: flash } %>
           	<%= yield %>            
           </div>
-        
-        </div><!--/span-->
-      </div><!--/row-->
+	</div>
+
 </div>
+
 </div>
 		
-<div id="footer">
-	<div class="container">
-    	<p>Copyright &copy; AppApp <%= Time.now.year %>. All rights reserved.</p>
-     </div>
-</div>
+
 
      
 

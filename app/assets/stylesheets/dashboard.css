@@ -410,9 +410,9 @@ html {
 }
 
 #dashboard-wrap {
-    height: auto !important;
+    
     margin: 0 auto -65px;
-    min-height: 100%;
+    height: 100%;
 }
 
 #dashboard-wrap > .container-fluid {
@@ -426,6 +426,71 @@ html {
     border-bottom: 4px solid #C5D52B;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.35);
 }
+
+
+.dashboard-container {
+    -moz-box-sizing: border-box;
+    height: 100%;
+	margin-top:45px;
+    position: relative;
+}
+
+#dashboard-sidebar {
+    float: left;
+    padding-top: 10px;
+    position: relative;
+    width: 200px;
+    z-index: 1;
+	background-color:#35353A;
+	color:	#FEFEFE;
+	height:100%;
+}
+
+#dashboard-content {
+    background-color: #FDFDFD;
+    margin-left: 200px;
+    padding-top: 10px;
+    height: 100%;
+
+}
+
+
+.genesis-nav-menu {
+    border-top: 1px solid #333333;
+    clear: both;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin: 12px 0;
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+}
+
+.genesis-nav-menu li {
+    border-bottom: 1px solid #333333;
+    float: left;
+    list-style-type: none;
+    width: 100%;
+}
+
+.genesis-nav-menu li  .selected{
+	background: #FDFDFD;
+    color: #000000;
+}
+
+.genesis-nav-menu a, .genesis-nav-menu li.menu-home > a {
+    background: none repeat scroll 0 0 transparent;
+    color: #DEDEDE;
+    display: block;
+    padding: 15px;
+    text-align: center;
+}
+.genesis-nav-menu a:hover, .genesis-nav-menu li.menu-home > a:hover {
+    background: #CDCDCD;
+    color: #333333;
+}
+
 
  #footer {
     height: 65px;

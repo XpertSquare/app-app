@@ -1993,7 +1993,6 @@ legend + .control-group {
 .form-horizontal .control-group:before,
 .form-horizontal .control-group:after {
   display: table;
-  content: "";
   line-height: 0;
 }
 .form-horizontal .control-group:after {

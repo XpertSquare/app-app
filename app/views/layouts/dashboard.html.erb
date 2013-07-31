@@ -54,15 +54,23 @@
               	<li><%= link_to "Dashboard", dashboard_path, :account_id => params[:account_id] %></li>
               <%end%>
               
-              <% if params[:controller]=="users"%>
-              	<li><%= link_to "Users", users_path, :account_id => params[:account_id], :class=>"selected"  %></li>              
-              <%else%>
-              	<li><%= link_to "Users", users_path, :account_id => params[:account_id] %></li>
-              <%end%>
+              
               <% if params[:controller]=="accounts"%>              
               	<li><%= link_to "Settings", settings_path, :account_id => params[:account_id], :class=>"selected"  %></li>
               <%else%>
               	<li><%= link_to "Settings", settings_path, :account_id => params[:account_id] %></li>
+              <%end%>
+              
+              <% if params[:controller]=="services"%>
+              	<li><%= link_to "Services", services_path, :account_id => params[:account_id], :class=>"selected"  %></li>              
+              <%else%>
+              	<li><%= link_to "Services", services_path, :account_id => params[:account_id] %></li>
+              <%end%>
+              
+              <% if params[:controller]=="users"%>
+              	<li><%= link_to "Users", users_path, :account_id => params[:account_id], :class=>"selected"  %></li>              
+              <%else%>
+              	<li><%= link_to "Users", users_path, :account_id => params[:account_id] %></li>
               <%end%>
 			
 		</ul>

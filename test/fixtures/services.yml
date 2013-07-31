@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  length: MyString
+  price: MyString
+  is_visible: false
+  is_online_booking: false
+
+two:
+  name: MyString
+  description: MyText
+  length: MyString
+  price: MyString
+  is_visible: false
+  is_online_booking: false

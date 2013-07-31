@@ -1,0 +1,27 @@
+<h2>Services under the Account ID: <%=@account.id.to_s + " - " + @account.name%></h2>
+
+<table class="table table-hover table-condensed">
+	<thead>
+		<tr>
+			<th width="120px">Action</th>
+			<th  width="250px">Name</th>
+			<th>Price</th>
+			<th>Length</th>
+		</tr>
+	</thead>
+<%@services.each do |service| %>
+	<tr>
+		<td>
+			<%= link_to "Edit", :controller => "services", :action=>"edit" , :account_id=>@account.id , :id =>service.id%>  
+			|  
+			<%= link_to 'Destroy', :controller=>"services", :action=>"destroy", :method=>'delete', :account_id => @account.id, :id=>service.id %>
+			</td>
+		<td><%=service.name %></td>
+		<td><%=service.price %></td>
+		<td><%=service.length%></td>			
+	</tr>	
+		
+<%end%>
+</table>
+
+<%= link_to 'Add new service', new_service_path, class: "btn btn-medium btn-primary" %>

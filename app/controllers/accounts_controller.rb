@@ -54,7 +54,7 @@ class AccountsController < ApplicationController
      @char_map =  [('a'..'z'),('A'..'Z'), (0..9)].map{|i| i.to_a}.flatten
      @user.password = (0...10).map{ @char_map[rand(@char_map.length)] }.join
      logger.info "User password: " + @user.password
-     logger.info "Sample generation: " + (0...10).map{ @char_map[rand(@char_map.length)] }.join
+     
      @user.password_confirmation = @user.password
    end     
    
@@ -64,13 +64,13 @@ class AccountsController < ApplicationController
      @membership = Membership.new
      @membership.account_id = @account.id
      @membership.user_id = @user.id
-     @membership.type = "owner"
+     @membership.membership_type = "owner"
      @membership.save
    end
-
+  logger.info "Account ID: " + @account.id.to_s
     respond_to do |format|
     if @account.id > 0 
-        ApplicationMailer.registration_confirmation(@account, @user).deliver         
+        #ApplicationMailer.registration_confirmation(@account, @user).deliver         
         format.html { redirect_to @account, notice: 'Account was successfully created.' }
         format.json { render json: @account, status: :created, location: @account }
       else

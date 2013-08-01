@@ -1,0 +1,35 @@
+<h2>Create a new service</h2>
+
+<%= form_for @service , :html => {:class => "form-horizontal"} do |f| %>
+  <% if @service.errors.any? %>
+    <div class="alert alert-error">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% @service.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => field_class(@service, :name) %>
+    <div class="controls">
+    	<%= f.text_field :name %>
+    </div>	
+  </div>
+    <div class="control-group">
+    <%= f.label :description, :class => field_class(@service	, :description) %>
+    <div class="controls">
+    	<%= f.text_field :description %>
+    </div>	
+  </div>
+
+
+  
+  <div class="control-group">
+	<div class="controls">
+  		<%= submit_tag "Create new service", class: "btn btn-medium btn-primary"   %>
+  	</div>
+  </div>  
+<% end %>
